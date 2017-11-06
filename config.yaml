@@ -1,0 +1,23 @@
+---
+id: 201711-dumb-pipes-smart-endpoints-1
+base_name: 201711-dumb-pipes-smart-endpoints-1
+tags:
+- rabbit
+- microservices
+- coarse-grained communication
+presentation_date: 2017-11-29
+version: 2017.11.06.1
+licenses:
+- MIT
+slideshare_id:
+speaker_deck_id: 
+ustream_id: 
+vimeo_id: 
+youtube_id: 
+author:
+  markup_language: :rd
+  name: Giovanni Sakti
+  email: giosakti@gmail.com
+  rubygems_user: giosakti
+  slideshare_user:
+  speaker_deck_user: giosakti 
