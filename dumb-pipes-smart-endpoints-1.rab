@@ -23,30 +23,54 @@
 
 = Inter-Services Communication
 
-(('tag:center'))Communication between services is a very important theme on microservices architecture.
+(('tag:center'))Communication between services is ((*an important theme*)) on microservices architecture.
+
+= Inter-Services Communication
+
+(('tag:center'))In monolithic application, communication is ((*less important*))..
+
+= Inter-Services Communication
+
+(('tag:center'))..because everything is just one query away or one method call away.
+
+= Inter-Services Communication
+
+(('tag:center'))In microservices, however, things are ((*different*)).
+
+= Inter-Services Communication
+
+(('tag:center'))For example:\n\n If direct conversion is used from monolithic to microservices architecture..
+
+= Inter-Services Communication
+
+(('tag:center'))..it will cause a ((*chatty*)) and ((*not efficient*)) communication.
+# chatty communication means the messages passed are too granular
+
+= Inter-Services Communication
+
+(('tag:center'))It will ((*not perform well*)) in distributed system.
+
+= Distributed System
+
+(('tag:center'))Distributed System
 
 == properties
   : hide-title
     true
 
-= Inter-Services Communication
+= Distributed System
 
-(('tag:center'))In monolithic application, communication is less important because everything is just one query away or one method call away.
+(('tag:center'))Microservice architecture is a distributed system.
 
-= Inter-Services Communication
+== properties
+  : hide-title
+    true
 
-(('tag:center'))In microservices, however, many thing is different.
-
-= Inter-Services Communication
-
-(('tag:center'))If direct conversion is used from monolithic to microservices architecture, it will cause a chatty and not efficient communication.
-# It will not perform well in distributed environments
-
-= Inter-Services Communication
+= Distributed System
 
 (('tag:center'))Challenges of designing distributed system properly is well known.
 
-= Inter-Services Communication
+= Distributed System
 
 (('tag:center'))Exist important concept that is known as "The Fallacies of Distributed Computing"
 
@@ -66,7 +90,11 @@
 
 = Dumb Pipes, Smart Endpoints
 
-(('tag:center'))To avoid those fallacies, microservices facilitates something called "Dumb Pipes and Smart Endpoints"
+(('tag:center'))To avoid those fallacies, microservices encourages\n\n "Dumb Pipes and Smart Endpoints"
+
+== properties
+  : hide-title
+    true
 
 = Dumb Pipes, Smart Endpoints
 
@@ -74,16 +102,16 @@
 
 = Dumb Pipes, Smart Endpoints
 
-(('tag:center'))The pipes (communication) should be lean and does not contain any logic to avoid problem with CI/CD and to avoid coupling.
+(('tag:center'))The pipes (communication) should be ((*lean*)) and does ((*not contain any logic*)) to avoid problem with CI/CD and to avoid coupling.
 # Because it is hard to version smart network infrastructure like ESB
 
 = Dumb Pipes, Smart Endpoints
 
-(('tag:center'))While the endpoints (services) should be as smart and adaptive as possible when communicating.
+(('tag:center'))While the endpoints (services) should be as ((*smart*)) and ((*adaptive*)) as possible when communicating.
 
 = Tolerant Reader
 
-(('tag:center'))Endpoints must become a ((*Tolerant Reader*))
+(('tag:center'))Services must become a ((*Tolerant Reader*))
 
 == properties
   : hide-title
@@ -91,17 +119,17 @@
 
 = Tolerant Reader
 
-(('tag:center'))Endpoints should be as tolerant as possible when reading data from a service.
+(('tag:center'))Services should be as ((*tolerant*)) as possible when reading data from other services.
 
 = Tolerant Reader
 
-(('tag:center'))Endpoints should also make minimum assumptions about the structure of the service response.
+(('tag:center'))Services should also make ((*minimum assumptions*)) about the structure of a response.
 
 = Tolerant Reader
 
-(('tag:center'))It is also recommended to design endpoints that take only the elements or data they need, and ignore everything else when consuming service.
+(('tag:center'))They must only take ((*necessary*)) elements or data and ignore everything else when consuming.
 
-= Coarser-grained Communication
+= Coarser-grained
 
 (('tag:center'))Towards Coarser-grained Communication
 
@@ -109,17 +137,17 @@
   : hide-title
     true
 
-= Coarser-grained Communication
+= Coarser-grained
 
-(('tag:center'))Because network calls are costly and unreliable, we should also use coarser-grained communications.
+(('tag:center'))Because network calls are costly and unreliable, we should use ((*coarser-grained*)) communications.
 
-= Coarser-grained Communication
+= Coarser-grained
 
-(('tag:center'))It means: to reduce opening many connections, calls should be grouped instead.
+(('tag:center'))It means: to reduce opening many connections, calls should be ((*grouped*)).
 
-= Coarser-grained Communication
+= Coarser-grained
 
-(('tag:center'))Request and response data should be aggregated so that it can be returned in fewer connections.
+(('tag:center'))Request and response data should be ((*aggregated*)) so that it can be returned in fewer connections.
 
 = Types of Communication
 
@@ -131,7 +159,7 @@
 
 = Types of Communication
 
-(('tag:center'))There are two types of communication that we can pick
+(('tag:center'))There are ((*two types*)) of communication that we can pick
 
 = Types of Communication
 
@@ -144,15 +172,19 @@
 
 = Remote Procedure Invocation
 
-(('tag:center'))If a service needs information from another service, it will asks that service directly by making a call.
+(('tag:center'))If a service needs information from another service, it will asks that service ((*directly*)) by making a call.
 
 = Remote Procedure Invocation
 
-(('tag:center'))The call will be a synchronous one, it means the process will block other processes until the remote service gives a response.
+(('tag:center'))The call will be a synchronous one.
 
 = Remote Procedure Invocation
 
-There are several RPI protocols available:
+(('tag:center'))Synchronous means the call will ((*block*)) other calls from happening until the remote service gives a response.
+
+= Remote Procedure Invocation
+
+Available RPI protocols:\n
 * REST API
 * SOAP
 * gRPC
@@ -160,23 +192,114 @@ There are several RPI protocols available:
 
 = REST API
 
-(('tag:center'))REST API is one of the most popular way for communicating between services with synchronous approach.
+(('tag:center'))REST API
+
+== properties
+  : hide-title
+    true
 
 = REST API
 
-(('tag:center'))Each REST API call is stateless and almost exclusively use HTTP protocol.
+(('tag:center'))REST API is one of the most ((*popular*)) way for communicating between services with synchronous approach.
 
 = REST API
 
-(('tag:center'))The request parameters can be put in the URL or embedded in its payload.
+(('tag:center'))Each REST API call is ((*stateless*)) and almost exclusively use ((*HTTP*)).
 
 = REST API
 
-(('tag:center'))While the reponse usually use JSON format.
+(('tag:center'))The request parameters can be put in the ((*URL*)) or embedded in its ((*payload*)).
 
 = REST API
 
-(('tag:center'))Standard on designing the response is usually exist in companies implementing REST API.
+(('tag:center'))While the reponse usually use ((*JSON*)) format.
+
+= REST API
+
+Request Example:
+
+  # <verb> <address/URL>
+
+= REST API
+
+Request Example:
+
+  # GET     /tasks  - Get all tasks
+  # POST    /tasks  - Create new task
+  # GET     /task/1 - Get task with ID 1
+  # PATCH   /task/1 - Update task with ID 1
+  # DELETE  /task/1 - Delete task with ID 1
+
+= REST API
+
+Response Example:
+
+  # GET /tasks
+  #
+  # [
+  #   {"id": 1, "name": "Clean your room"},
+  #   {"id": 2, "name": "Go to bank"},
+  #   {"id": 3, "name": "Study foreign language"}
+  # ]
+
+= REST API
+
+(('tag:center'))It is up to us to format our response.
+
+= REST API
+
+(('tag:center'))But companies usually ((*enforce*)) standards on API response.
+
+= REST API
+
+(('tag:center'))Some companies even open-sourced their standards, there are also initiatives to create universal standard.
+
+= REST API
+
+(('tag:center'))It is much better to ((*follow*)) a standard when designing an API response.
+
+= Summary
+
+(('tag:center'))Summary
+
+== properties
+  : hide-title
+    true
+
+= Summary
+
+* We discussed about communication in microservices architecture
+
+= Summary
+
+* Microservice architecture is a distributed system, the challanges of distributed system are well known
+
+= Summary
+
+* To solve, microservices promote "dumb pipes, smart endpoints"
+
+= Summary
+
+* Relation ((*between*)) services should be as decoupled as possible
+* Relation ((*within*)) a service should be cohesive
+
+= Summary
+
+* Pipes should be ((*lean*))
+* Services should be ((*tolerant*)) when consuming
+* Communication should be ((*coarse*))
+
+= Summary
+
+* Study two types of communication: synchronous and asynchronous
+
+= Part 2
+
+(('tag:center'))To be continued in ((*part 2*))
+
+== properties
+  : hide-title
+    true
 
 = Thanks
 
