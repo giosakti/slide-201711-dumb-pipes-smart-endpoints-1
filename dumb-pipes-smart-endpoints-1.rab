@@ -184,7 +184,7 @@
 
 = Remote Procedure Invocation
 
-Available RPI protocols:\n
+Available RPI techniques:\n
 * REST API
 * SOAP
 * gRPC
@@ -291,7 +291,7 @@ Response Example:
 
 = Summary
 
-* Study two types of communication: synchronous and asynchronous
+* Study two types of communication: RPI and Messaging
 
 = Part 2
 
